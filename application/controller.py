@@ -32,13 +32,16 @@ class Controller():
         :return:
         '''
         try:
-            client = MongoClient(
-                'mongodb+srv://admin:admin@cluster0.o48jx.mongodb.net/dreamwell?retryWrites=true&w=majority',
-                tlsCAFile=certifi.where())
+            client = pymongo.MongoClient("mongodb://localhost:27017/?retryWrites=true&w=majority")
+            # client = MongoClient(
+            #     # "mongodb+srv://admin:admin@cluster0.sabrv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority" ,
+            #     #  --apiVersion 1 --username admin
+            #     'mongodb+srv://admin:admin@cluster0.o48jx.mongodb.net/dreamwell?retryWrites=true&w=majority',
+            #     tlsCAFile=certifi.where())
             data_connection = client['Python']
             return data_connection
         except ConnectionError as e:
-            
+
             print("error occurred", e)
 
     def get_all(self):
@@ -236,7 +239,7 @@ class Controller():
         '''
         self.db_connect()
         while True:
-            print("Program coded by Nicole Yue, Student# 040991455")
+            print("Program coded by Jing Zhao, Student# 040994750")
             self.view.show_menu()
             self.view.user_select()
 
@@ -248,10 +251,10 @@ this runs the program
 #     c = Controller()
 #     c.main()
 
-c = Controller()
-db = c.db_connect()
-col = db['pipeline']
-df = c.all_in_df()
+# c = Controller()
+# db = c.db_connect()
+# col = db['pipeline']
+# df = c.all_in_df()
 # temp = pd.DatetimeIndex(df['Reported Date']).year
 # temp= c.column_summary("Incident Types")
 # print(type(temp))
